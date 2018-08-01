@@ -1,0 +1,11 @@
+{
+  "name": "demo-dockercompose-network",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Afif Sohaili <afifnajib@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@feathersjs/cli": "^3.7.6",
+    "vue-cli": "^2.9.6"
+  }
+}
