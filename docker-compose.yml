@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  database:
+    image: 'postgres'
+  backend:
+    build: ./backend
+    command: /bin/bash -c "sleep 3; yarn backpack dev"
+    depends_on:
+      - database
+  frontend:
+    build: ./frontend
+    command: /bin/bash -c "sleep 15; yarn nuxt"
+    depends_on:
+      - backend
+  spec:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.e2e
+    command: /bin/bash -c "sleep 30; yarn cypress run"
+    depends_on:
+      - frontend
+      - backend

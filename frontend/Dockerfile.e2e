@@ -1,0 +1,16 @@
+FROM cypress/base:8
+
+ENV CYPRESS_API_URL http://backend:3030
+ENV CYPRESS_FRONTEND_URL http://frontend:3000
+
+RUN mkdir /app
+WORKDIR /app
+
+COPY package.json .
+COPY yarn.lock .
+COPY cypress.json .
+COPY cypress/ cypress/
+
+RUN yarn cache clean && yarn install --pure-lockfile
+
+CMD ["node", "-v"]
